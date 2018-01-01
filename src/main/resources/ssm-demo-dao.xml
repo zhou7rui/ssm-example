@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) zhourui Company, 2017.All Rights Reserved.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--<context:property-placeholder location="classpath:jdbc.properties" file-encoding="UTF-8" ignore-unresolvable="true"/>-->
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configuration" ref="configuration"/>
+        <property name="typeAliasesPackage" value="xyz.zrui.ssm.model"/>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:xyz/zrui/ssm/dao/*Mapper.xml</value>
+                <value>classpath:xyz/zrui/ssm/daoext/*Mapper.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+          destroy-method="close">
+        <property name="poolProperties">
+            <bean class="org.apache.tomcat.jdbc.pool.PoolProperties">
+                <property name="driverClassName" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.user}"/>
+                <property name="password" value="${jdbc.pass}"/>
+                <property name="jmxEnabled" value="true"/>
+                <property name="testWhileIdle" value="true"/>
+                <property name="testOnBorrow" value="true"/>
+                <property name="testOnReturn" value="false"/>
+                <property name="validationInterval" value="30000"/>
+                <property name="validationQuery" value="select 1 from dual"/>
+                <property name="timeBetweenEvictionRunsMillis" value="30000"/>
+                <property name="maxActive" value="100"/>
+                <property name="initialSize" value="10"/>
+                <property name="maxWait" value="10000"/>
+                <property name="minEvictableIdleTimeMillis" value="30000"/>
+                <property name="minIdle" value="10"/>
+                <property name="logAbandoned" value="false"/>
+                <property name="removeAbandoned" value="true"/>
+                <property name="removeAbandonedTimeout" value="60"/>
+                <property name="jdbcInterceptors"
+                          value="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="configuration" class="org.apache.ibatis.session.Configuration">
+        <property name="cacheEnabled" value="${mybatis.cacheEnabled}"/>
+    </bean>
+
+
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="xyz.zrui.ssm.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+
+
+</beans>

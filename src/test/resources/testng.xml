@@ -1,0 +1,12 @@
+<!--
+  ~ Copyright (C) zhourui Company, 2017.All Rights Reserved.
+  -->
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ts-scorpius-service">
+    <test name="service">
+        <packages>
+            <package name="xyz.zrui.ssm.service.*"/>
+        </packages>
+    </test>
+</suite>
