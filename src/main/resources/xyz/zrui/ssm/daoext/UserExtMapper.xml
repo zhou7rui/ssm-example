@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) Benesse China Company, 2017.All rights reserved.
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.zrui.ssm.dao.UserMapper">
+  <resultMap id="RoleResultMap" type="xyz.zrui.ssm.model.ext.UserExtRole" extends="BaseResultMap">
+    <collection property="roles" ofType="xyz.zrui.ssm.model.Role"
+                resultMap="xyz.zrui.ssm.dao.RoleMapper.BaseResultMap" />
+  </resultMap>
+
+
+  <select id="selectUserExtRoleByExample" resultMap="RoleResultMap" parameterType="xyz.zrui.ssm.model.UserExample">
+    select
+    <include refid="Base_Column_List" />,
+
+    ssm_user user
+    left join  ssm_role role on user.id = role.user_id
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+
+
+</mapper>
