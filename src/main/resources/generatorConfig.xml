@@ -6,7 +6,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 
 <generatorConfiguration>
-    <properties url="file:///Users/zhourui/IdeaProjects/ssm-demo/src/main/resources/jdbc.properties"/>
+    <properties url="file:///home/devel/IdeaProjects/ssm-demo/src/main/resources/jdbc.properties"/>
     <context id="ts-scorpius-dao" defaultModelType="conditional" targetRuntime="MyBatis3">
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
@@ -28,7 +28,19 @@
 
         </javaClientGenerator>
 
-        <table schema="ssm" tableName="user" domainObjectName="User" alias="user"
+        <table schema="ssm" tableName="ssm_user" domainObjectName="User" alias="user"
+               enableInsert="true"
+               enableSelectByPrimaryKey="true" enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true" enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true" enableDeleteByExample="true"
+               enableCountByExample="true">
+
+            <property name="rootInterface" value="xyz.zrui.ssm.dao.ext.UserExtMapper"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+
+        </table>
+
+        <table schema="ssm" tableName="ssm_role" domainObjectName="Role" alias="role"
                enableInsert="true"
                enableSelectByPrimaryKey="true" enableSelectByExample="true"
                enableUpdateByPrimaryKey="true" enableUpdateByExample="true"

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.19, for osx10.13 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: ssm
 -- ------------------------------------------------------
--- Server version	5.7.20
+-- Server version	5.7.18
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,13 +16,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `ssm_role`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `ssm_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
+CREATE TABLE `ssm_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '角色名',
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='角色';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ssm_role`
+--
+
+LOCK TABLES `ssm_role` WRITE;
+/*!40000 ALTER TABLE `ssm_role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ssm_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ssm_user`
+--
+
+DROP TABLE IF EXISTS `ssm_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ssm_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户名',
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '密码',
@@ -32,16 +56,17 @@ CREATE TABLE `user` (
   `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '个人说明',
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '头像',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `ssm_user`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `ssm_user` WRITE;
+/*!40000 ALTER TABLE `ssm_user` DISABLE KEYS */;
+INSERT INTO `ssm_user` VALUES (1,'zhourui','123456',22,'1','zrui','hello world','https://www.google.com'),(2,'zhourui','123456',22,'1','zrui','hello world','https://www.google.com');
+/*!40000 ALTER TABLE `ssm_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-01 17:05:01
+-- Dump completed on 2018-01-10 15:00:08
