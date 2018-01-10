@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Benesse China Company, 2017.All rights reserved.
+ * Copyright (C) zhourui China Company, 2017.All rights reserved.
  */
 
 package xyz.zrui.ssm.model.ext;
@@ -19,5 +19,14 @@ public class UserExtRole extends User {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+
+        return "UserExtRole{"
+                + super.toString() +
+                "roles=" + roles +
+                '}';
     }
 }

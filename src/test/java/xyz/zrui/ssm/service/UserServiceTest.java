@@ -9,6 +9,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import xyz.zrui.ssm.model.User;
+import xyz.zrui.ssm.model.ext.UserExtRole;
+
+import java.util.List;
 
 import static org.testng.Assert.*;
 
@@ -21,9 +24,8 @@ public class UserServiceTest extends ServiceTestBase {
     private User user;
 
 
-
     @BeforeClass
-    private void setUp(){
+    private void setUp() {
         user = new User();
         user.setUserName("zhourui");
         user.setPassword("123456");
@@ -38,5 +40,12 @@ public class UserServiceTest extends ServiceTestBase {
     public void testCreateUser() throws Exception {
         userService.createUser(user);
     }
+
+    @Test
+    public void findUserExtIntegral() throws Exception {
+        List<UserExtRole> userExtRoles = userService.findUserExtIntegral();
+        userExtRoles.forEach(System.out::println);
+    }
+
 
 }

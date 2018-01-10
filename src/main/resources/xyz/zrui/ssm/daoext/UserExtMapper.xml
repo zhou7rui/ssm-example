@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (C) Benesse China Company, 2017.All rights reserved.
+  ~ Copyright (C) zhourui China Company, 2017.All rights reserved.
   -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="xyz.zrui.ssm.dao.UserMapper">
+
   <resultMap id="RoleResultMap" type="xyz.zrui.ssm.model.ext.UserExtRole" extends="BaseResultMap">
-    <collection property="roles" ofType="xyz.zrui.ssm.model.Role"
-                resultMap="xyz.zrui.ssm.dao.RoleMapper.BaseResultMap" />
+    <collection  property="roles" ofType="xyz.zrui.ssm.model.Role">
+      <id column="role_id" jdbcType="INTEGER" property="id" />
+      <result column="role_title" jdbcType="VARCHAR" property="title" />
+      <result column="role_user_id" jdbcType="INTEGER" property="userId" />
+    </collection>
   </resultMap>
 
 
   <select id="selectUserExtRoleByExample" resultMap="RoleResultMap" parameterType="xyz.zrui.ssm.model.UserExample">
     select
     <include refid="Base_Column_List" />,
-
+    <include refid="xyz.zrui.ssm.dao.RoleMapper.Base_Column_List" />
+    from
     ssm_user user
     left join  ssm_role role on user.id = role.user_id
     <if test="_parameter != null">
