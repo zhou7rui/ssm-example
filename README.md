@@ -1,4 +1,5 @@
 # spring spring-mvc mybatis
+[![Build Status](https://travis-ci.com/zhou7rui/ssm-demo.svg?branch=master)](https://travis-ci.com/zhou7rui/ssm-demo)  
 使用Idea搭建的gradle项目, 集成最新版的spring 和 spring-mvc 和mybatis, 连接池使用的Tomcat-jdbc,log使用是logback,json 工具时候用的gson
 ```shell
 
