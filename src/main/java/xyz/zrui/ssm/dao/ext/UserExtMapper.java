@@ -1,6 +1,4 @@
-/*
- * Copyright (C) zhourui China Company, 2017.All rights reserved.
- */
+
 
 package xyz.zrui.ssm.dao.ext;
 

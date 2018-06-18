@@ -1,7 +1,3 @@
-/*
- * Copyright (C) Benesse China Company, 2017.All rights reserved.
- */
-
 package xyz.zrui.ssm.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;

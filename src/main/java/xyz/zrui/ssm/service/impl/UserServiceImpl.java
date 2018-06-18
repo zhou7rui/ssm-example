@@ -1,7 +1,3 @@
-/*
- * Copyright (C) zhourui Company, 2017.All Rights Reserved.
- */
-
 package xyz.zrui.ssm.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
