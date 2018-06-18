@@ -55,6 +55,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.testng/testng
     testCompile 'org.testng:testng:6.13.1'
 
+    // https://github.com/wix/wix-embedded-mysql
+    testCompile 'com.wix:wix-embedded-mysql:4.1.2'
+
 
 }
 

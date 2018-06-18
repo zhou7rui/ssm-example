@@ -1,5 +1,3 @@
-
-
 package xyz.zrui.ssm.model.ext;
 
 import xyz.zrui.ssm.model.Role;

@@ -3,14 +3,12 @@ package xyz.zrui.ssm.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import xyz.zrui.ssm.model.User;
 import xyz.zrui.ssm.model.ext.UserExtRole;
+import static org.testng.Assert.*;
 
 import java.util.List;
-
-import static org.testng.Assert.*;
 
 public class UserServiceTest extends ServiceTestBase {
 
@@ -36,9 +34,11 @@ public class UserServiceTest extends ServiceTestBase {
     @Test
     public void testCreateUser() throws Exception {
         userService.createUser(user);
+        assertNotNull(user.getId());
+        assertEquals(user.getUserName(),"zhourui");
     }
 
-    @Test
+    @Test(dependsOnMethods = "testCreateUser")
     public void findUserExtIntegral() throws Exception {
         List<UserExtRole> userExtRoles = userService.findUserExtIntegral();
         userExtRoles.forEach(System.out::println);
