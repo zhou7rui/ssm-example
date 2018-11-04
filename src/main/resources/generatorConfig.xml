@@ -6,7 +6,6 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 
 <generatorConfiguration>
-    <properties url="file:///home/devel/IdeaProjects/ssm-demo/src/main/resources/jdbc.properties"/>
     <context id="ts-scorpius-dao" defaultModelType="conditional" targetRuntime="MyBatis3">
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
